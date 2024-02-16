@@ -1,0 +1,339 @@
+<div class="flex h-screen">
+  <div class="w-[250px] fixed">
+    <div class="flex h-screen flex-col justify-between border-e bg-white">
+      <div class="px-4 py-6">
+        <ul class="mt-6 space-y-1">
+          <li>
+            <a
+              routerLink="dashboard"
+              class="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+            >
+              Dashboard
+            </a>
+          </li>
+
+          <li
+            *ngIf="
+              authService.roles.includes('ROLE_ADMIN') ||
+              authService.roles.includes('ROLE_TECHNICIAN')
+            "
+          >
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                <span class="text-sm font-medium"> Users </span>
+
+                <span
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <a
+                    routerLink="userlab/index"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    List All Users
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    routerLink="userlab/create"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    Add User
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+
+          <li
+            *ngIf="
+              authService.roles.includes('ROLE_ADMIN') ||
+              authService.roles.includes('ROLE_TECHNICIAN')
+            "
+          >
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                <span class="text-sm font-medium"> Patients </span>
+
+                <span
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <a
+                    routerLink="patient/index"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    List All Patients
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    routerLink="patient/create"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    Add Patient
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li
+            *ngIf="
+              authService.roles.includes('ROLE_ADMIN') ||
+              authService.roles.includes('ROLE_TECHNICIAN')
+            "
+          >
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                <span class="text-sm font-medium"> Sample </span>
+
+                <span
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <a
+                    routerLink="sample/create"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    Add Sample
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li
+            *ngIf="
+              authService.roles.includes('ROLE_ADMIN') ||
+              authService.roles.includes('ROLE_TECHNICIAN')
+            "
+          >
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                <span class="text-sm font-medium"> Analysis </span>
+
+                <span
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <a
+                    routerLink="analysis/index"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    All Analysis
+                  </a>
+                </li>
+              </ul>
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <a
+                    routerLink="analysis/create"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    Add new Analysis
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <li
+            *ngIf="
+              authService.roles.includes('ROLE_ADMIN') ||
+              authService.roles.includes('ROLE_MANAGER') ||
+              authService.roles.includes('ROLE_TECHNICIAN')
+            "
+          >
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                <span class="text-sm font-medium"> Providers </span>
+
+                <span
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <a
+                    routerLink="fournisseur/index"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    List All Providers
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    routerLink="fournisseur/create"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    Add Provider
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <!--Reagent-->
+          <li
+            *ngIf="
+              authService.roles.includes('ROLE_ADMIN') ||
+              authService.roles.includes('ROLE_MANAGER') ||
+              authService.roles.includes('ROLE_TECHNICIAN')
+            "
+          >
+            <details class="group [&_summary::-webkit-details-marker]:hidden">
+              <summary
+                class="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+              >
+                <span class="text-sm font-medium"> Reagents </span>
+
+                <span
+                  class="shrink-0 transition duration-300 group-open:-rotate-180"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-5 w-5"
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                  >
+                    <path
+                      fill-rule="evenodd"
+                      d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                      clip-rule="evenodd"
+                    />
+                  </svg>
+                </span>
+              </summary>
+
+              <ul class="mt-2 space-y-1 px-4">
+                <li>
+                  <a
+                    routerLink="reagent/index"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    List All Reagents
+                  </a>
+                </li>
+
+                <li>
+                  <a
+                    routerLink="reagent/create"
+                    class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                  >
+                    Add Reagent
+                  </a>
+                </li>
+              </ul>
+            </details>
+          </li>
+          <!-- <li>
+                <a
+                  href=""
+                  class="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                >
+                  Dashboard
+                </a>
+              </li> -->
+          <li *ngIf="authService.isAuthenticated == true">
+            <a
+              routerLink="dashboard"
+              (click)="handleLogout()"
+              class="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+            >
+              {{ this.authService.username }} Logout
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="flex-1 ml-[250px]"><router-outlet></router-outlet></div>
+</div>

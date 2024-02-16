@@ -1,0 +1,6 @@
+export enum SampleStatus {
+  WAITING = 'WAITING',
+  ANALYSING = 'ANALYSING',
+  FINISHED = 'FINISHED',
+  FAILURE = 'FAILURE',
+}

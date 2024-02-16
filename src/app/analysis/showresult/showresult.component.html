@@ -1,0 +1,124 @@
+<header>
+  <div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="text-center sm:text-left">
+        <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">Result</h1>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="flow-root rounded-lg border border-gray-100 py-3 shadow-sm">
+  <dl class="-my-3 divide-y divide-gray-100 text-sm">
+    <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
+      <dt class="font-medium text-gray-900">Analysis id :</dt>
+      <dd class="text-gray-700 sm:col-span-2">{{ AnalysisResult.id }}</dd>
+    </div>
+    <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
+      <dt class="font-medium text-gray-900">Analysis Type :</dt>
+      <dd class="text-gray-700 sm:col-span-2">
+        {{ AnalysisResult.analysisTypeName }}
+      </dd>
+    </div>
+
+    <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
+      <dt class="font-medium text-gray-900">Patient Name :</dt>
+      <dd class="text-gray-700 sm:col-span-2">
+        {{ AnalysisResult.patientDTO.firstname }}
+        {{ AnalysisResult.patientDTO.lastname }}
+      </dd>
+    </div>
+
+    <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
+      <dt class="font-medium text-gray-900">Analysis Status :</dt>
+      <dd class="text-gray-700 sm:col-span-2">{{ AnalysisResult.status }}</dd>
+    </div>
+
+    <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
+      <dt class="font-medium text-gray-900">Analysis Result :</dt>
+      <dd class="text-gray-700 sm:col-span-2">
+        {{
+          AnalysisResult.resultAnalysis === null
+            ? "Waiting"
+            : AnalysisResult.resultAnalysis
+            ? "NORMAL"
+            : "ANORMAL"
+        }}
+      </dd>
+    </div>
+    <div class="grid grid-cols-1 gap-1 p-3 sm:grid-cols-3 sm:gap-4">
+      <dt class="font-medium text-gray-900">Tests :</dt>
+      <dd class="text-gray-700 sm:col-span-2">
+        <!--
+  Heads up! 👋
+
+  This component comes with some `rtl` classes. Please remove them if they are not needed in your project.
+-->
+
+        <div class="overflow-x-auto rounded-lg border border-gray-200">
+          <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+            <thead class="ltr:text-left rtl:text-right">
+              <tr>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Test Name
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Result
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Status
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Result Test
+                </th>
+
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  min
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  max
+                </th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-200">
+              <tr *ngFor="let test of AnalysisResult.testsDTO">
+                <td
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  {{ test.nameTest }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ test.result }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ test.status }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ test.resultTest }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ test.min }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ test.max }}
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </dd>
+    </div>
+  </dl>
+</div>

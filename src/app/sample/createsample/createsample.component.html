@@ -1,0 +1,115 @@
+<header>
+  <div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="text-center sm:text-left">
+        <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
+          Create new Sample
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<app-backdrop [show]="loading"></app-backdrop>
+<section class="bg-gray-100 flex justify-center">
+  <div class="w-full mx-10 py-5 sm:px-1 lg:px-1">
+    <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+      <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-5 lg:p-12">
+        <form
+          [formGroup]="createForm"
+          class="space-y-4"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="date" class="block text-sm font-medium text-gray-900"
+                >Date :</label
+              >
+              <input
+                class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                type="date"
+                name="date"
+                id="date"
+                formControlName="date"
+              />
+            </div>
+          </div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label
+                for="idPatient"
+                class="block text-sm font-medium text-gray-900"
+              >
+                Patient :
+              </label>
+
+              <select
+                name="idPatient"
+                id="idPatient"
+                formControlName="idPatient"
+                class="w-full h-[47px] rounded-lg border border-gray-300 text-gray-700 text-sm"
+              >
+                <option value="">Please select</option>
+                <option *ngFor="let patient of patients" [value]="patient.id">
+                  {{ patient.firstname }}
+                </option>
+              </select>
+            </div>
+            <div>
+              <label
+                for="status"
+                class="block text-sm font-medium text-gray-900"
+              >
+                Status :
+              </label>
+
+              <select
+                name="status"
+                id="status"
+                class="w-full h-[47px] rounded-lg border border-gray-300 text-gray-700 text-sm"
+                formControlName="status"
+              >
+                <option value="">Please select</option>
+                <option value="WAITING">WAITING</option>
+                <option value="ANALYSING">ANALYSING</option>
+                <option value="FINISHED">FINISHED</option>
+                <option value="FAILURE">FAILURE</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="type" class="block text-sm font-medium text-gray-900">
+                Type :
+              </label>
+
+              <select
+                name="type"
+                id="type"
+                class="w-full h-[47px] rounded-lg border border-gray-300 text-gray-700 text-sm"
+                formControlName="type"
+              >
+                <option value="">Please select</option>
+                <option value="BLOOD">BLOOD</option>
+                <option value="NASAL">NASAL</option>
+                <option value="TISSUEBIOSIES">TISSUE BIOSIES</option>
+              </select>
+            </div>
+          </div>
+
+          <div></div>
+
+          <div class="mt-4">
+            <button
+              type="submit"
+              [disabled]="createForm.invalid"
+              class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto disabled:opacity-50"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

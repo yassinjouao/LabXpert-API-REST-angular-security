@@ -1,0 +1,100 @@
+<header>
+  <div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="text-center sm:text-left">
+        <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
+          List all users
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<section class="bg-gray-100 flex justify-center">
+  <div class="w-full mx-10 py-5 sm:px-1 lg:px-1">
+    <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+      <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-5 lg:p-12">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+            <thead class="ltr:text-left rtl:text-right">
+              <tr>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Id
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Name
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Role
+                </th>
+                <th
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  Status
+                </th>
+                <th class="px-4 py-2"></th>
+              </tr>
+            </thead>
+
+            <tbody class="divide-y divide-gray-200">
+              <tr *ngFor="let userlab of userlabs">
+                <td
+                  class="whitespace-nowrap px-4 py-2 font-medium text-gray-900"
+                >
+                  {{ userlab.id }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ userlab.name }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2 text-gray-700">
+                  {{ userlab.userRole }}
+                </td>
+                <td class="whitespace-nowrap px-4 py-2">
+                  <span
+                    [ngClass]="getStatusClass(userlab.status)"
+                    class="whitespace-nowrap rounded-full bg-purple-100 px-2.5 py-0.5 text-sm"
+                  >
+                    {{ userlab.status }}
+                  </span>
+                </td>
+                <td class="whitespace-nowrap px-4 py-2">
+                  <span
+                    class="inline-flex -space-x-px overflow-hidden rounded-md border bg-white shadow-sm"
+                  >
+                    <button
+                      routerLink="/userlab/update/{{ userlab.id }}"
+                      class="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative"
+                    >
+                      Edit
+                    </button>
+                    <span>
+                      <button
+                        routerLink="/userlab/update/{{ userlab.id }}"
+                        [queryParams]="{ viewMode: true }"
+                        class="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative"
+                      >
+                        View
+                      </button>
+                    </span>
+                    <button
+                      (click)="updateStatus(userlab.id, userlab.status)"
+                      class="inline-block px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:relative"
+                    >
+                      <span *ngIf="userlab.status === 'INACTIVE'">INABLE</span>
+                      <span *ngIf="userlab.status === 'ACTIVE'">DISABLE</span>
+                    </button>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

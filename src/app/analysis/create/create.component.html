@@ -1,0 +1,124 @@
+<header>
+  <div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="text-center sm:text-left">
+        <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
+          Create new analysis
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<app-backdrop [show]="loading"></app-backdrop>
+<section class="bg-gray-100 flex justify-center">
+  <div class="w-full mx-10 py-5 sm:px-1 lg:px-1">
+    <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+      <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-5 lg:p-12">
+        <form [formGroup]="createForm" class="space-y-4" (submit)="onSubmit()">
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label
+                for="IdPatient"
+                class="block text-sm font-medium text-gray-900"
+              >
+                Patient :
+              </label>
+
+              <select
+                (change)="onPatientChange($event)"
+                name="IdPatient"
+                id="IdPatient"
+                formControlName="IdPatient"
+                class="w-full h-[47px] rounded-lg border border-gray-300 text-gray-700 text-sm"
+              >
+                <option value="">Please select</option>
+                <option *ngFor="let patient of patients" [value]="patient.id">
+                  {{ patient.firstname }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label
+                for="IdSample"
+                class="block text-sm font-medium text-gray-900"
+              >
+                Sample :
+              </label>
+
+              <select
+                name="IdSample"
+                id="IdSample"
+                formControlName="IdSample"
+                class="w-full h-[47px] rounded-lg border border-gray-300 text-gray-700 text-sm"
+              >
+                <option value="">Please select</option>
+                <option *ngFor="let sample of samples" [value]="sample.id">
+                  {{ sample.id }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label
+                for="IdUserLab"
+                class="block text-sm font-medium text-gray-900"
+              >
+                User :
+              </label>
+
+              <select
+                name="IdUserLab"
+                id="IdUserLab"
+                formControlName="IdUserLab"
+                class="w-full h-[47px] rounded-lg border border-gray-300 text-gray-700 text-sm"
+              >
+                <option value="">Please select</option>
+                <option *ngFor="let userlab of userlabs" [value]="userlab.id">
+                  {{ userlab.name }}
+                </option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label
+                for="IdAnalysisType"
+                class="block text-sm font-medium text-gray-900"
+              >
+                AnalysisType :
+              </label>
+
+              <select
+                name="IdAnalysisType"
+                id="IdAnalysisType"
+                class="w-full h-[47px] rounded-lg border border-gray-300 text-gray-700 text-sm"
+                formControlName="IdAnalysisType"
+              >
+                <option value="">Please select</option>
+                <option value="1">gastro</option>
+                <option value="2">hepatique</option>
+                <option value="3">diabete</option>
+              </select>
+            </div>
+          </div>
+
+          <div></div>
+
+          <div class="mt-4">
+            <button
+              type="submit"
+              [disabled]="createForm.invalid"
+              class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto disabled:opacity-50"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

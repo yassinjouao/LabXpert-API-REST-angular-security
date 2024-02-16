@@ -1,0 +1,6 @@
+export enum RoleUser {
+  NOTHING = 'NOTHING',
+  TECHNICIAN = 'TECHNICIAN',
+  MANAGER = 'MANAGER',
+  ADMIN = 'ADMIN',
+}

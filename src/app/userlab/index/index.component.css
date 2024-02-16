@@ -1,0 +1,19 @@
+/* my-component.component.css or styles.css */
+.active-color {
+  color: rgb(51, 207, 51);
+}
+
+.inactive-color {
+  color: rgb(216, 64, 64);
+}
+
+.pending-color {
+  color: orange;
+}
+input:checked {
+  background-color: #22c55e; /* bg-green-500 */
+}
+
+input:checked ~ span:last-child {
+  --tw-translate-x: 1.75rem; /* translate-x-7 */
+}

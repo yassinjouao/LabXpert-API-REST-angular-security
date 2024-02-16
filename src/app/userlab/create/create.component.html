@@ -1,0 +1,127 @@
+<header>
+  <div class="max-w-screen-xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8">
+    <div class="sm:flex sm:items-center sm:justify-between">
+      <div class="text-center sm:text-left">
+        <h1 class="text-2xl font-bold text-gray-900 sm:text-3xl">
+          Create new users
+        </h1>
+      </div>
+    </div>
+  </div>
+</header>
+<app-backdrop [show]="loading"></app-backdrop>
+<section class="bg-gray-100 flex justify-center">
+  <div class="w-full mx-10 py-5 sm:px-1 lg:px-1">
+    <div class="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
+      <div class="rounded-lg bg-white p-8 shadow-lg lg:col-span-5 lg:p-12">
+        <form
+          [formGroup]="createForm"
+          class="space-y-4"
+          (ngSubmit)="onSubmit()"
+        >
+          <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div>
+              <label for="name" class="block text-sm font-medium text-gray-900"
+                >Name</label
+              >
+              <input
+                class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+                placeholder="Name"
+                type="text"
+                id="name"
+                formControlName="name"
+              />
+            </div>
+            <div>
+              <label
+                for="userRole"
+                class="block text-sm font-medium text-gray-900"
+              >
+                Role :
+              </label>
+
+              <select
+                name="userRole"
+                id="userRole"
+                class="w-full h-[47px] rounded-lg border border-gray-300 text-gray-700 text-sm"
+                formControlName="userRole"
+              >
+                <option value="">Please select</option>
+                <option value="ADMIN">Admin</option>
+                <option value="MANAGER">Manager</option>
+                <option value="TECHNICIAN">Technician</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-4 text-center sm:grid-cols-2">
+            <div>
+              <input
+                class="peer sr-only"
+                id="active"
+                type="radio"
+                tabindex="-1"
+                name="status"
+                value="ACTIVE"
+                formControlName="status"
+              />
+
+              <label
+                for="active"
+                class="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white"
+                tabindex="0"
+              >
+                <span class="text-sm"> ACTIVE </span>
+              </label>
+            </div>
+
+            <div>
+              <input
+                class="peer sr-only"
+                id="inactive"
+                type="radio"
+                tabindex="-1"
+                name="status"
+                value="INACTIVE"
+                formControlName="status"
+              />
+
+              <label
+                for="inactive"
+                class="block w-full rounded-lg border border-gray-200 p-3 text-gray-600 hover:border-black peer-checked:border-black peer-checked:bg-black peer-checked:text-white"
+                tabindex="0"
+              >
+                <span class="text-sm"> INACTIVE </span>
+              </label>
+            </div>
+          </div>
+          <div>
+            <label
+              for="information"
+              class="block text-sm font-medium text-gray-900"
+            >
+              Information :
+            </label>
+            <textarea
+              class="w-full rounded-lg border border-gray-200 p-3 text-sm"
+              placeholder="information about user"
+              rows="8"
+              id="information"
+              formControlName="information"
+            ></textarea>
+          </div>
+
+          <div class="mt-4">
+            <button
+              type="submit"
+              [disabled]="createForm.invalid"
+              class="inline-block w-full rounded-lg bg-black px-5 py-3 font-medium text-white sm:w-auto disabled:opacity-50"
+            >
+              Save
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
